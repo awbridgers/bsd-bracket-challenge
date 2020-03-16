@@ -38,14 +38,18 @@ body,html{
   flex-flow: row nowrap;
   width: auto;
   justify-content: center;
-  min-width: 1020px;
+  min-width: 1130px;
   color: #cfb53b;
+  margin: 0px 5px;
 }
 .sixtyFour, .thirtyTwo, .sweet16, .elite8, .final4, .finals, .champion{
   display: flex;
   flex-flow: column nowrap;
-  width: 100px;
+  width: 120px;
   position: relative;
+}
+.champion{
+  width:85px;
 }
 
 .round1, .round2{
@@ -166,15 +170,7 @@ body,html{
   position: absolute;
   bottom: 189px;
 }
-/* .pod5:nth-child(even) .rightBorder5{
-  z-index: 0;
-  border-right: 0px;
-  border-left: 1px solid white;
-  height: 551px;
-  width: 100%;
-  position: absolute;
-  bottom: 189px;
-} */
+
 .pod6{
   height: 800px;
   display: flex;
@@ -200,9 +196,9 @@ body,html{
   position: absolute;
   width: 200px;
   height: 50px;
-  left: -60px;
-  top: 490px;
-  bottom: 0px;
+  top: 510px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
 
 }
@@ -250,6 +246,9 @@ body,html{
   font-size: 13px;
   font-weight: normal;
   line-height: normal;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 300;
+
 }
 .seedRight{
     width: 14px;
@@ -327,4 +326,10 @@ body,html{
 }
 .createButton:hover{
   background: #a8a8a8
+}
+.create{
+  text-align: center;
+}
+.create h1{
+  color: #cfb53b;
 }

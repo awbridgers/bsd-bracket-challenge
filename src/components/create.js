@@ -11,6 +11,7 @@ const Create = props =>{
   }
   return(
     <div className = 'create'>
+      <h1>Create your Bracket</h1>
         <Bracket finish = {finish}/>
     </div>
   )
