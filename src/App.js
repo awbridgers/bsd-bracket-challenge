@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import LeaderBoard from './components/leaderboard.js.jsx'
+import Create from './components/create.js';
+import { useHistory } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = props =>{
+  const history = useHistory();
+  const createBracket = ()=>{
+    history.push('/create')
 }
-
+  return(
+    <div className = 'App'>
+      <h1>2020 Bracket Challenge</h1>
+      <button onClick = {createBracket}
+        className = 'createButton'>Create Bracket</button>
+      <LeaderBoard/>
+    </div>
+  )
+}
 export default App;
