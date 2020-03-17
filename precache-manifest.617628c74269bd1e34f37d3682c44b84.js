@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "898e9f1e10be7b0565e282a700f9d7c9",
+    "revision": "756727f03c63114ba2aba7f9c73fa1f3",
     "url": "/bsd-bracket-challenge/index.html"
   },
   {
-    "revision": "0f71f85a3006bfc5157a",
+    "revision": "39016ad94a38b539616b",
     "url": "/bsd-bracket-challenge/static/css/main.8206a1f2.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bsd-bracket-challenge/static/js/2.8b15f367.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0f71f85a3006bfc5157a",
-    "url": "/bsd-bracket-challenge/static/js/main.5eac4922.chunk.js"
+    "revision": "39016ad94a38b539616b",
+    "url": "/bsd-bracket-challenge/static/js/main.67e28344.chunk.js"
   },
   {
     "revision": "3a47513cf77ba46f501e",

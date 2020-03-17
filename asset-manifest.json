@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/bsd-bracket-challenge/static/css/main.8206a1f2.chunk.css",
-    "main.js": "/bsd-bracket-challenge/static/js/main.5eac4922.chunk.js",
-    "main.js.map": "/bsd-bracket-challenge/static/js/main.5eac4922.chunk.js.map",
+    "main.js": "/bsd-bracket-challenge/static/js/main.67e28344.chunk.js",
+    "main.js.map": "/bsd-bracket-challenge/static/js/main.67e28344.chunk.js.map",
     "runtime-main.js": "/bsd-bracket-challenge/static/js/runtime-main.ea46dbdc.js",
     "runtime-main.js.map": "/bsd-bracket-challenge/static/js/runtime-main.ea46dbdc.js.map",
     "static/js/2.8b15f367.chunk.js": "/bsd-bracket-challenge/static/js/2.8b15f367.chunk.js",
     "static/js/2.8b15f367.chunk.js.map": "/bsd-bracket-challenge/static/js/2.8b15f367.chunk.js.map",
     "index.html": "/bsd-bracket-challenge/index.html",
-    "precache-manifest.e4c80cebccd153110fa0e8a9ab1300cc.js": "/bsd-bracket-challenge/precache-manifest.e4c80cebccd153110fa0e8a9ab1300cc.js",
+    "precache-manifest.617628c74269bd1e34f37d3682c44b84.js": "/bsd-bracket-challenge/precache-manifest.617628c74269bd1e34f37d3682c44b84.js",
     "service-worker.js": "/bsd-bracket-challenge/service-worker.js",
     "static/css/main.8206a1f2.chunk.css.map": "/bsd-bracket-challenge/static/css/main.8206a1f2.chunk.css.map",
     "static/js/2.8b15f367.chunk.js.LICENSE.txt": "/bsd-bracket-challenge/static/js/2.8b15f367.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ea46dbdc.js",
     "static/js/2.8b15f367.chunk.js",
     "static/css/main.8206a1f2.chunk.css",
-    "static/js/main.5eac4922.chunk.js"
+    "static/js/main.67e28344.chunk.js"
   ]
 }
