@@ -9,9 +9,10 @@ import 'firebase/database';
 import 'firebase/auth';
 import { Provider, connect } from 'react-redux'
 import store from './store.js'
-import { updateUserArray, updateDataLoaded } from './actions/index.js';
+import { updateUserArray, updateDataLoaded, changeReload } from './actions/index.js';
 import Create from './components/create.js'
 import Viewer from './components/viewer.js'
+import {results} from './teamList.js'
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -23,6 +24,7 @@ firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 })
 
+// firebase.database().ref('/Key').set({results: results})
 
 
 const Test = ()=>{
@@ -36,22 +38,25 @@ const Test = ()=>{
 
 const Routing = (props) =>{
   useEffect(()=>{
-    let tempArray = [];
-    firebase.database().ref('/Users').once('value').then((snapshot)=>{
-      snapshot.forEach((user)=>{
-        const {userName, score, champion, bracket, email} = user.val();
-        tempArray.push({
-          userName,
-          score: parseInt(score,10),
-          champion,
-          bracket,
+    if(props.reload){
+      let tempArray = [];
+      firebase.database().ref('/Users').once('value').then((snapshot)=>{
+        snapshot.forEach((user)=>{
+          const {userName, score, champion, bracket, email} = user.val();
+          tempArray.push({
+            userName,
+            score: parseInt(score,10),
+            champion,
+            bracket,
+          })
         })
+        tempArray.sort((a,b)=>b.score - a.score)
+        props.updateUserArray(tempArray);
+        props.updateDataLoaded(true);
+        props.changeReload(false);
       })
-      tempArray.sort((a,b)=>b.score - a.score)
-      props.updateUserArray(tempArray);
-      props.updateDataLoaded(true);
-    })
-  },[])
+    }
+  },[props.reload])
   return(
     <div>
       <Router>
@@ -73,8 +78,12 @@ const Routing = (props) =>{
 const mapDispatchToProps = dispatch =>({
   updateUserArray: (array)=>dispatch(updateUserArray(array)),
   updateDataLoaded: (bool)=>dispatch(updateDataLoaded(bool)),
+  changeReload: (bool) =>dispatch(changeReload(bool))
 })
-const ConnectedRouter = connect(null, mapDispatchToProps)(Routing);
+const mapStateToProps = state =>({
+  reload: state.reload
+})
+const ConnectedRouter = connect(mapStateToProps, mapDispatchToProps)(Routing);
 
 const BracketChallenge = () =>(
   <Provider store = {store}>

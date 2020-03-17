@@ -26,7 +26,7 @@ const LeaderBoard = props => {
           {props.userList.map((name,i)=>{
             return(
               <tr key = {i}>
-                <td><a href = '#' id = {name.userName} onClick = {viewBracket}>{name.userName}</a></td>
+                <td><a href = '#' id = {name.userName} onClick = {viewBracket}>{name.userName.replace(/_/g, ' ')}</a></td>
                 <td>{name.score}</td>
                 <td>{name.champion}</td>
               </tr>

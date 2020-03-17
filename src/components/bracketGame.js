@@ -19,7 +19,13 @@ export class Bracket extends Component{
     this.ref = firebase.database().ref('/Users');
   }
   componentDidMount(){
-
+    console.log('Adam[]#!.$'.replace(/[#!.$\[\]]/g, ''))
+  }
+  fixName = name =>{
+    let fixer = name;
+    fixer = name.replace(/ /g, '_');
+    fixer = fixer.replace(/[^a-zA-Z0-9'()]/g, '');
+    return fixer;
   }
   submit = () => {
     const blank = this.state.resultsArray.filter(x=>x.name === '');
@@ -37,9 +43,9 @@ export class Bracket extends Component{
         alert('That name is taken, please choose another.')
       }
       else{
-        //submit here
-        this.ref.child(`/${this.state.bracketName}`).update({
-          userName: this.state.bracketName,
+        submit here
+        this.ref.child(`/${this.state.bracketName.replace(/[.#$\[\]]/g, '')}`).update({
+          userName: this.fixName(this.state.bracketName.replace(/ /g, '_')),
           score: 0,
           champion: this.state.resultsArray[62].name,
           bracket: this.state.resultsArray,

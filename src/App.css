@@ -7,8 +7,9 @@ body,html{
 }
 .leaderboard{
   margin: 0px auto;
-  width:60%;
+  width:70%;
   font-size: 20px;
+  min-width: 420px;
 }
 
 .leaderboard td{
@@ -205,11 +206,15 @@ body,html{
 .pod7 .team{
   height:100%;
   width: 100%;
-  font-size: 20px;
+
 }
 .pod7 .seed{
   font-size: 18px;
   width: 26px;
+}
+.pod7 .name{
+  font-size: 20px;
+  font-weight: bold;
 }
 .pod:nth-child(even) .rightBorder, .pod2:nth-child(even) .rightBorder,
 .pod3:nth-child(even) .rightBorder, .pod4:nth-child(even) .rightBorder,
@@ -247,7 +252,7 @@ body,html{
   font-weight: normal;
   line-height: normal;
   font-family: "Times New Roman", Times, serif;
-  font-weight: 300;
+  font-weight: 500;
 
 }
 .seedRight{
@@ -330,6 +335,6 @@ body,html{
 .create{
   text-align: center;
 }
-.create h1{
+.banner{
   color: #cfb53b;
 }
