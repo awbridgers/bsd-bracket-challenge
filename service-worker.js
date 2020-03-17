@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bsd-bracket-challenge/precache-manifest.c88f53aa476a4b59278dfa164e3105c9.js"
+  "/bsd-bracket-challenge/precache-manifest.50a17dad51f41c67ea0599b787d78e70.js"
 );
 
 self.addEventListener('message', (event) => {
