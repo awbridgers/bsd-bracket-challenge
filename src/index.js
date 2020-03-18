@@ -24,7 +24,7 @@ firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 })
 
-// firebase.database().ref('/Key').set({results: results})
+//firebase.database().ref('/Key').set({results: results})
 
 
 const Test = ()=>{
@@ -37,23 +37,72 @@ const Test = ()=>{
 }
 
 const Routing = (props) =>{
+  const gradeBracket = (bracket, key) =>{
+    const newBracket = bracket.map((game,i)=>{
+      if(key[i].name === ''){
+        return game
+      }
+      if(game.name !== key[i].name){
+        return {
+          ...game, correct: 'incorrect'
+        }
+      }
+      else{
+        return game
+      }
+    })
+    return newBracket;
+  }
+  const calculateScore = (bracket, key) =>{
+    let score = 0;
+    bracket.forEach((game,i)=>{
+      //if the user got it correct
+      if(game.name === key[i].name){
+        if(i<32){
+          score += 10
+        }
+        else if(i>=32 && i<48){
+          score += 20
+        }
+        else if(i>=48 && i<56){
+          score += 30
+        }
+        else if(i>=56 && i<60){
+          score += 40
+        }
+        else if(i>=60 && i<62){
+          score += 50
+        }
+        else if(i === 62){
+          score+= 60;
+        }
+      }
+    })
+    return score;
+  }
   useEffect(()=>{
     if(props.reload){
       let tempArray = [];
-      firebase.database().ref('/Users').once('value').then((snapshot)=>{
-        snapshot.forEach((user)=>{
-          const {userName, score, champion, bracket, email} = user.val();
-          tempArray.push({
-            userName,
-            score: parseInt(score,10),
-            champion,
-            bracket,
+      let bracketKey = [];
+      firebase.database().ref('/Key').once('value').then((key)=>{
+        bracketKey = key.val().results;
+        console.log(bracketKey)
+      }).then(()=>{
+        firebase.database().ref('/Users').once('value').then((snapshot)=>{
+          snapshot.forEach((user)=>{
+            let {userName, score, champion, bracket, email} = user.val();
+            tempArray.push({
+              userName,
+              score: calculateScore(bracket, bracketKey),
+              champion,
+              bracket: gradeBracket(bracket, bracketKey)
+            })
           })
+          tempArray.sort((a,b)=>b.score - a.score)
+          props.updateUserArray(tempArray);
+          props.updateDataLoaded(true);
+          props.changeReload(false);
         })
-        tempArray.sort((a,b)=>b.score - a.score)
-        props.updateUserArray(tempArray);
-        props.updateDataLoaded(true);
-        props.changeReload(false);
       })
     }
   },[props.reload])

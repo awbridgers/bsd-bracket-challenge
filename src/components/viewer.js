@@ -44,6 +44,7 @@ const Viewer = props => {
       </div>
       <div className = 'thirtyTwo'>
         {bracket.slice(0,16).map((team,i)=>{
+          console.log(team)
           return(
             <div className = 'pod2'>
               <div className = 'border2'></div>
@@ -60,7 +61,7 @@ const Viewer = props => {
           return(
             <div className = 'pod3'>
               <div className = 'border3'></div>
-              <div id = {`game${iterator}`} className = 'team viewer' >
+              <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
                 <div className = 'name'>{team.name}</div>
               </div>
@@ -73,7 +74,7 @@ const Viewer = props => {
           return(
             <div className = 'pod4'>
               <div className = 'border4'></div>
-              <div id = {`game${iterator}`} className = 'team viewer' >
+              <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
                 <div className = 'name'>{team.name}</div>
               </div>
@@ -86,7 +87,7 @@ const Viewer = props => {
           return(
             <div className = 'pod5'>
               <div className = 'border5'></div>
-              <div id = {`game${iterator}`} className = 'team viewer' >
+              <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
                 <div className = 'name'>{team.name}</div>
               </div>
@@ -97,7 +98,7 @@ const Viewer = props => {
       <div className = 'finals'>
         <div className = 'pod6'>
           <div className = 'border6'></div>
-          <div id = {`game${60}`} className = 'team viewer' >
+          <div id = {`game${60}`} className = {`team viewer ${bracket[60].correct}`} >
             <div className = 'seed'>{bracket[60].seed}</div>
             <div className = 'name'>{bracket[60].name}</div>
           </div>
@@ -106,7 +107,7 @@ const Viewer = props => {
       <div className = 'champion'>
         <div className = 'pod7'>
           <div className = 'border7'></div>
-          <div id = {`game${62}`} className = 'team viewer'>
+          <div id = {`game${62}`} className = {`team viewer ${bracket[62].correct}`}>
             <div className = 'seed'>{bracket[62].seed}</div>
             <div className = 'name'>{bracket[62].name}</div>
           </div>
@@ -115,7 +116,7 @@ const Viewer = props => {
       <div className = 'finals'>
         <div className = 'pod6 right6'>
           <div className = 'border6'></div>
-          <div id = {`game${61}`} className = 'team viewer' >
+          <div id = {`game${61}`} className = {`team viewer ${bracket[61].correct}`} >
             <div className = 'seed'>{bracket[61].seed}</div>
             <div className = 'name'>{bracket[61].name}</div>
           </div>
@@ -126,7 +127,7 @@ const Viewer = props => {
           return(
             <div className = 'pod5'>
               <div className = 'border5 rightBorder'></div>
-              <div id = {`game${iterator}`} className = 'team viewer' >
+              <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
                 <div className = 'name'>{team.name}</div>
               </div>
@@ -139,7 +140,7 @@ const Viewer = props => {
           return(
             <div className = 'pod4'>
               <div className = 'border4 rightBorder'></div>
-              <div id = {`game${iterator}`} className = 'team viewer' >
+              <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
                 <div className = 'name'>{team.name}</div>
               </div>
@@ -152,7 +153,7 @@ const Viewer = props => {
           return(
             <div className = 'pod3'>
               <div className = 'border3 rightBorder'></div>
-              <div id = {`game${iterator}`} className = 'team viewer' >
+              <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
                 <div className = 'name'>{team.name}</div>
               </div>
@@ -165,7 +166,7 @@ const Viewer = props => {
         return(
           <div className = 'pod2'>
             <div className = 'border2 rightBorder'></div>
-            <div id = {`game${iterator}`} className = 'team viewer' >
+            <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
               <div className = 'seed'>{team.seed}</div>
               <div className = 'name'>{team.name}</div>
             </div>
