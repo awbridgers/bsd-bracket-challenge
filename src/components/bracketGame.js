@@ -24,7 +24,7 @@ export class Bracket extends Component{
   fixName = name =>{
     let fixer = name;
     fixer = name.replace(/ /g, '_');
-    fixer = fixer.replace(/[^a-zA-Z0-9'()]/g, '');
+    fixer = fixer.replace(/[^a-zA-Z0-9'()_]/g, '');
     return fixer;
   }
   submit = () => {
@@ -43,9 +43,9 @@ export class Bracket extends Component{
         alert('That name is taken, please choose another.')
       }
       else{
-        submit here
+        //submit here
         this.ref.child(`/${this.state.bracketName.replace(/[.#$\[\]]/g, '')}`).update({
-          userName: this.fixName(this.state.bracketName.replace(/ /g, '_')),
+          userName: this.fixName(this.state.bracketName),
           score: 0,
           champion: this.state.resultsArray[62].name,
           bracket: this.state.resultsArray,
