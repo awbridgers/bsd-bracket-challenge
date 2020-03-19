@@ -19,7 +19,7 @@ export class Bracket extends Component{
     this.ref = firebase.database().ref('/Users');
   }
   componentDidMount(){
-    console.log('Adam[]#!.$'.replace(/[#!.$\[\]]/g, ''))
+    // console.log('Adam[]#!.$'.replace(/[#!.$\[\]]/g, ''))
   }
   fixName = name =>{
     let fixer = name;
@@ -44,7 +44,7 @@ export class Bracket extends Component{
       }
       else{
         //submit here
-        this.ref.child(`/${this.state.bracketName.replace(/[.#$\[\]]/g, '')}`).update({
+        this.ref.child(`/${this.state.bracketName.replace(/[.#$[]\]/g, '')}`).update({
           userName: this.fixName(this.state.bracketName),
           score: 0,
           champion: this.state.resultsArray[62].name,
@@ -114,7 +114,7 @@ export class Bracket extends Component{
           {this.spacerArray.slice(0,32).map((x,i)=>{
             const team = teamArray[i];
             return(
-              <div className = 'pod'>
+              <div key = {i} className = 'pod'>
                 <div className = 'border'></div>
                 <div id = {i} className = 'team' onClick = {(e)=>this.selectTeam(e,'round1')}>
                   <div className = 'seed'>{team.seed}</div>
@@ -128,7 +128,7 @@ export class Bracket extends Component{
           {this.spacerArray.slice(0,16).map((x,i)=>{
             const team = resultsArray[i]
             return(
-              <div className = 'pod2'>
+              <div key = {i} className = 'pod2'>
                 <div className = 'border2'></div>
                 <div id = {`game${i}`} className = 'team' onClick = {(e)=>this.selectTeam(e, 'round2')}>
                   <div className = 'seed'>{team.seed}</div>
@@ -143,7 +143,7 @@ export class Bracket extends Component{
             const iterator = i+32;
             const team = resultsArray[iterator];
             return(
-              <div className = 'pod3'>
+              <div key = {i} className = 'pod3'>
                 <div className = 'border3'></div>
                 <div id = {`game${iterator}`} className = 'team' onClick = {(e)=>this.selectTeam(e,'sweet16')}>
                   <div className = 'seed'>{team.seed}</div>
@@ -158,7 +158,7 @@ export class Bracket extends Component{
             const iterator = i+48;
             const team = resultsArray[iterator]
             return(
-              <div className = 'pod4'>
+              <div key = {i} className = 'pod4'>
                 <div className = 'border4'></div>
                 <div id = {`game${iterator}`} className = 'team' onClick = {(e)=>this.selectTeam(e, 'elite8')}>
                   <div className = 'seed'>{team.seed}</div>
@@ -173,7 +173,7 @@ export class Bracket extends Component{
             const iterator = i+56;
             const team = resultsArray[iterator];
             return(
-              <div className = 'pod5'>
+              <div key = {i} className = 'pod5'>
                 <div className = 'border5'></div>
                 <div id = {`game${iterator}`} className = 'team' onClick = {(e)=>this.selectTeam(e, 'final4')}>
                   <div className = 'seed'>{team.seed}</div>
@@ -215,7 +215,7 @@ export class Bracket extends Component{
             const iterator = i+58;
             const team = resultsArray[iterator];
             return(
-              <div className = 'pod5'>
+              <div key = {i} className = 'pod5'>
                 <div className = 'border5 rightBorder'></div>
                 <div id = {`game${iterator}`} className = 'team' onClick = {(e)=>this.selectTeam(e, 'final4')}>
                   <div className = 'seed'>{team.seed}</div>
@@ -230,7 +230,7 @@ export class Bracket extends Component{
             const iterator = i+52;
             const team = resultsArray[iterator];
             return(
-              <div className = 'pod4'>
+              <div key = {i} className = 'pod4'>
                 <div className = 'border4 rightBorder'></div>
                 <div id = {`game${iterator}`} className = 'team' onClick = {(e)=>this.selectTeam(e, 'elite8')}>
                   <div className = 'seed'>{team.seed}</div>
@@ -245,7 +245,7 @@ export class Bracket extends Component{
             const iterator = i+40;
             const team = resultsArray[iterator];
             return(
-              <div className = 'pod3'>
+              <div key = {i} className = 'pod3'>
                 <div className = 'border3 rightBorder'></div>
                 <div id = {`game${iterator}`} className = 'team' onClick = {(e)=>this.selectTeam(e, 'sweet16')}>
                   <div className = 'seed'>{team.seed}</div>
@@ -260,7 +260,7 @@ export class Bracket extends Component{
           const iterator = i+16;
           const team = resultsArray[iterator];
           return(
-            <div className = 'pod2'>
+            <div key = {i} className = 'pod2'>
               <div className = 'border2 rightBorder'></div>
               <div id = {`game${iterator}`} className = 'team' onClick = {(e)=>this.selectTeam(e,'round2')}>
                 <div className = 'seed'>{team.seed}</div>
@@ -275,7 +275,7 @@ export class Bracket extends Component{
           const iterator = i+32
           const team = teamArray[iterator];
           return(
-            <div className = 'pod'>
+            <div className = 'pod' key = {i} >
               <div className = 'border rightBorder'></div>
               <div id = {iterator} className = 'team alignRight' onClick = {(e)=>this.selectTeam(e, 'round1')}>
                 <div className = 'name'>{team.name}</div>

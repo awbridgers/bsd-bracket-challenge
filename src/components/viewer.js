@@ -6,16 +6,17 @@ import { connect } from 'react-redux';
 
 const Viewer = props => {
   const {userName} = useParams();
+  const {dataLoaded, keyBracket, gameKey, userList} = props;
   const history = useHistory();
   const [bracket, changeBracket] = useState(results.slice());
   useEffect(()=>{
-    if(props.dataLoaded){
-      if(props.keyBracket){
-        changeBracket(props.results)
+    if(dataLoaded){
+      if(keyBracket){
+        changeBracket(results)
       }
       else{
         //check to see if the username exists
-        const bracketCheck = props.userList.find(x=>x.userName === userName);
+        const bracketCheck = userList.find(x=>x.userName === userName);
         if(typeof(bracketCheck)=== 'undefined'){
           //if the user does not exist, reroute to home
           alert('User does not exist');
@@ -27,7 +28,7 @@ const Viewer = props => {
         }
       }
     }
-  },[props.dataLoaded, userName])
+  },[dataLoaded, keyBracket, gameKey, userName, history, userList])
   const home = () =>{
     history.push('/')
   }
@@ -37,7 +38,7 @@ const Viewer = props => {
       <div className = 'sixtyFour'>
         {teamArray.slice(0,32).map((team,i)=>{
           return(
-            <div className = 'pod'>
+            <div key = {i} className = 'pod'>
               <div className = 'border'></div>
               <div id = {i} className = 'team viewer' >
                 <div className = 'seed'>{team.seed}</div>
@@ -51,7 +52,7 @@ const Viewer = props => {
         {bracket.slice(0,16).map((team,i)=>{
           //console.log(team)
           return(
-            <div className = 'pod2'>
+            <div key = {i} className = 'pod2'>
               <div className = 'border2'></div>
               <div id = {`game${i}`} className = {`team viewer ${team.correct}`}>
                 <div className = 'seed'>{team.seed}</div>
@@ -64,7 +65,7 @@ const Viewer = props => {
       <div className = 'sweet16'>
         {bracket.slice(32,40).map((team, iterator)=>{
           return(
-            <div className = 'pod3'>
+            <div key = {iterator} className = 'pod3'>
               <div className = 'border3'></div>
               <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
@@ -77,7 +78,7 @@ const Viewer = props => {
       <div className = 'elite8'>
         {bracket.slice(48,52).map((team, iterator)=>{
           return(
-            <div className = 'pod4'>
+            <div key = {iterator} className = 'pod4'>
               <div className = 'border4'></div>
               <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
@@ -90,7 +91,7 @@ const Viewer = props => {
       <div className = 'final4'>
         {bracket.slice(56,58).map((team,iterator)=>{
           return(
-            <div className = 'pod5'>
+            <div key = {iterator} className = 'pod5'>
               <div className = 'border5'></div>
               <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
@@ -130,7 +131,7 @@ const Viewer = props => {
       <div className = 'final4'>
         {bracket.slice(58,60).map((team,iterator)=>{
           return(
-            <div className = 'pod5'>
+            <div key = {iterator} className = 'pod5'>
               <div className = 'border5 rightBorder'></div>
               <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
@@ -143,7 +144,7 @@ const Viewer = props => {
       <div className = 'elite8'>
         {bracket.slice(52,56).map((team,iterator)=>{
           return(
-            <div className = 'pod4'>
+            <div key = {iterator} className = 'pod4'>
               <div className = 'border4 rightBorder'></div>
               <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
@@ -156,7 +157,7 @@ const Viewer = props => {
       <div className = 'sweet16'>
         {bracket.slice(40,48).map((team,iterator)=>{
           return(
-            <div className = 'pod3'>
+            <div key = {iterator} className = 'pod3'>
               <div className = 'border3 rightBorder'></div>
               <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
                 <div className = 'seed'>{team.seed}</div>
@@ -169,7 +170,7 @@ const Viewer = props => {
     <div className = 'thirtyTwo'>
       {bracket.slice(16,32).map((team,iterator)=>{
         return(
-          <div className = 'pod2'>
+          <div key = {iterator} className = 'pod2'>
             <div className = 'border2 rightBorder'></div>
             <div id = {`game${iterator}`} className = {`team viewer ${team.correct}`} >
               <div className = 'seed'>{team.seed}</div>
@@ -182,7 +183,7 @@ const Viewer = props => {
     <div className = 'sixtyFour'>
       {teamArray.slice(32).map((team,iterator)=>{
         return(
-          <div className = 'pod'>
+          <div key = {iterator} className = 'pod'>
             <div className = 'border rightBorder'></div>
             <div id = {iterator} className = 'team alignRight'>
               <div className = 'name'>{team.name}</div>
@@ -198,6 +199,6 @@ const Viewer = props => {
 const mapStateToProps = state =>({
   userList: state.userList,
   dataLoaded: state.dataLoaded,
-  results: state.key
+  gameKey: state.key
 })
 export default connect(mapStateToProps)(Viewer)

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.js';
 import * as serviceWorker from './serviceWorker';
-import {HashRouter as Router, Route, useParams, Switch } from 'react-router-dom'
+import {HashRouter as Router, Route, Switch } from 'react-router-dom'
 import firebase from 'firebase/app'
 import 'firebase/database';
 import 'firebase/auth';
@@ -12,7 +12,7 @@ import store from './store.js'
 import { updateUserArray, updateDataLoaded, changeReload, changeKey } from './actions/index.js';
 import Create from './components/create.js'
 import Viewer from './components/viewer.js'
-import {results} from './teamList.js'
+//import {results} from './teamList.js'
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -27,16 +27,10 @@ firebase.initializeApp({
 //firebase.database().ref('/Key').set({results: results})
 
 
-const Test = ()=>{
-  let {userName} = useParams()
-  return(
-    <div style = {{color: '#cfb53b'}}>
-      <h1>{userName}</h1>
-    </div>
-  )
-}
+
 
 const Routing = (props) =>{
+  const {reload, updateUserArray, updateDataLoaded, changeReload, changeKey} = props;
   const gradeBracket = (bracket, key) =>{
     const newBracket = bracket.map((game,i)=>{
       if(key[i].name === ''){
@@ -81,16 +75,16 @@ const Routing = (props) =>{
     return score;
   }
   useEffect(()=>{
-    if(props.reload){
+    if(reload){
       let tempArray = [];
       let bracketKey = [];
       firebase.database().ref('/Key').once('value').then((key)=>{
         bracketKey = key.val().results;
-        props.changeKey(bracketKey)
+        changeKey(bracketKey)
       }).then(()=>{
         firebase.database().ref('/Users').once('value').then((snapshot)=>{
           snapshot.forEach((user)=>{
-            let {userName, score, champion, bracket, email} = user.val();
+            let {userName, champion, bracket} = user.val();
             tempArray.push({
               userName,
               score: calculateScore(bracket, bracketKey),
@@ -99,13 +93,13 @@ const Routing = (props) =>{
             })
           })
           tempArray.sort((a,b)=>b.score - a.score)
-          props.updateUserArray(tempArray);
-          props.updateDataLoaded(true);
-          props.changeReload(false);
+          updateUserArray(tempArray);
+          updateDataLoaded(true);
+          changeReload(false);
         })
       })
     }
-  },[props.reload])
+  },[reload,updateUserArray, updateDataLoaded, changeReload, changeKey])
   return(
     <div>
       <Router>

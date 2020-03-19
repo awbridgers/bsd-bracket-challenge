@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 import LeaderBoard from './components/leaderboard.js.jsx'
-import Create from './components/create.js';
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 const App = props =>{
   const history = useHistory();
@@ -14,6 +13,9 @@ const App = props =>{
       <h1>2020 Bracket Challenge</h1>
       <button onClick = {createBracket}
         className = 'createButton'>Create Bracket</button>
+        <Link className = 'link' to = {'/key'}>
+          <h3>Results</h3>
+        </Link>
       <LeaderBoard/>
     </div>
   )
