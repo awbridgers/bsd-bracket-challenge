@@ -9,7 +9,7 @@ import 'firebase/database';
 import 'firebase/auth';
 import { Provider, connect } from 'react-redux'
 import store from './store.js'
-import { updateUserArray, updateDataLoaded, changeReload } from './actions/index.js';
+import { updateUserArray, updateDataLoaded, changeReload, changeKey } from './actions/index.js';
 import Create from './components/create.js'
 import Viewer from './components/viewer.js'
 import {results} from './teamList.js'
@@ -86,7 +86,7 @@ const Routing = (props) =>{
       let bracketKey = [];
       firebase.database().ref('/Key').once('value').then((key)=>{
         bracketKey = key.val().results;
-        console.log(bracketKey)
+        props.changeKey(bracketKey)
       }).then(()=>{
         firebase.database().ref('/Users').once('value').then((snapshot)=>{
           snapshot.forEach((user)=>{
@@ -116,6 +116,9 @@ const Routing = (props) =>{
           <Route path = '/brackets/:userName'>
             <Viewer />
           </Route>
+          <Route path = '/key'>
+            <Viewer keyBracket/>
+          </Route>
           <Route path = '/'>
             <App />
           </Route>
@@ -127,7 +130,8 @@ const Routing = (props) =>{
 const mapDispatchToProps = dispatch =>({
   updateUserArray: (array)=>dispatch(updateUserArray(array)),
   updateDataLoaded: (bool)=>dispatch(updateDataLoaded(bool)),
-  changeReload: (bool) =>dispatch(changeReload(bool))
+  changeReload: (bool) =>dispatch(changeReload(bool)),
+  changeKey: (key)=> dispatch(changeKey(key))
 })
 const mapStateToProps = state =>({
   reload: state.reload

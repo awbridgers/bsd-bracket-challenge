@@ -10,16 +10,21 @@ const Viewer = props => {
   const [bracket, changeBracket] = useState(results.slice());
   useEffect(()=>{
     if(props.dataLoaded){
-      //check to see if the username exists
-      const bracketCheck = props.userList.find(x=>x.userName === userName);
-      if(typeof(bracketCheck)=== 'undefined'){
-        //if the user does not exist, reroute to home
-        alert('User does not exist');
-        history.push('/')
+      if(props.keyBracket){
+        changeBracket(props.results)
       }
       else{
-        //if the user does exist, update the bracket array
-        changeBracket(bracketCheck.bracket)
+        //check to see if the username exists
+        const bracketCheck = props.userList.find(x=>x.userName === userName);
+        if(typeof(bracketCheck)=== 'undefined'){
+          //if the user does not exist, reroute to home
+          alert('User does not exist');
+          history.push('/')
+        }
+        else{
+          //if the user does exist, update the bracket array
+          changeBracket(bracketCheck.bracket)
+        }
       }
     }
   },[props.dataLoaded, userName])
@@ -44,7 +49,7 @@ const Viewer = props => {
       </div>
       <div className = 'thirtyTwo'>
         {bracket.slice(0,16).map((team,i)=>{
-          console.log(team)
+          //console.log(team)
           return(
             <div className = 'pod2'>
               <div className = 'border2'></div>
@@ -192,6 +197,7 @@ const Viewer = props => {
 }
 const mapStateToProps = state =>({
   userList: state.userList,
-  dataLoaded: state.dataLoaded
+  dataLoaded: state.dataLoaded,
+  results: state.key
 })
 export default connect(mapStateToProps)(Viewer)
