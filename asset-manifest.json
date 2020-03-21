@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/bsd-bracket-challenge/static/css/main.e24a1ad1.chunk.css",
-    "main.js": "/bsd-bracket-challenge/static/js/main.364c9ed4.chunk.js",
-    "main.js.map": "/bsd-bracket-challenge/static/js/main.364c9ed4.chunk.js.map",
+    "main.css": "/bsd-bracket-challenge/static/css/main.65c5f898.chunk.css",
+    "main.js": "/bsd-bracket-challenge/static/js/main.4f8c9c28.chunk.js",
+    "main.js.map": "/bsd-bracket-challenge/static/js/main.4f8c9c28.chunk.js.map",
     "runtime-main.js": "/bsd-bracket-challenge/static/js/runtime-main.ea46dbdc.js",
     "runtime-main.js.map": "/bsd-bracket-challenge/static/js/runtime-main.ea46dbdc.js.map",
     "static/js/2.56c44282.chunk.js": "/bsd-bracket-challenge/static/js/2.56c44282.chunk.js",
     "static/js/2.56c44282.chunk.js.map": "/bsd-bracket-challenge/static/js/2.56c44282.chunk.js.map",
     "index.html": "/bsd-bracket-challenge/index.html",
-    "precache-manifest.28619a5c378427851ca2b38cdc788652.js": "/bsd-bracket-challenge/precache-manifest.28619a5c378427851ca2b38cdc788652.js",
+    "precache-manifest.4bf597aff9fc9088f1fea7a977161fca.js": "/bsd-bracket-challenge/precache-manifest.4bf597aff9fc9088f1fea7a977161fca.js",
     "service-worker.js": "/bsd-bracket-challenge/service-worker.js",
-    "static/css/main.e24a1ad1.chunk.css.map": "/bsd-bracket-challenge/static/css/main.e24a1ad1.chunk.css.map",
+    "static/css/main.65c5f898.chunk.css.map": "/bsd-bracket-challenge/static/css/main.65c5f898.chunk.css.map",
     "static/js/2.56c44282.chunk.js.LICENSE.txt": "/bsd-bracket-challenge/static/js/2.56c44282.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ea46dbdc.js",
     "static/js/2.56c44282.chunk.js",
-    "static/css/main.e24a1ad1.chunk.css",
-    "static/js/main.364c9ed4.chunk.js"
+    "static/css/main.65c5f898.chunk.css",
+    "static/js/main.4f8c9c28.chunk.js"
   ]
 }
