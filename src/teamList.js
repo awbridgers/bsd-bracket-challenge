@@ -83,7 +83,7 @@ export const teamArray = [
 {name: 'Ohio St.', seed: 5, correct: 'correct'},
 {name: 'SFA', seed: 12, correct: 'correct'},
 //
-{name: 'Louisvile', seed: 4, correct: 'correct'},
+{name: 'Louisville', seed: 4, correct: 'correct'},
 {name: 'Vermont', seed: 13, correct: 'correct'},
 //
 {name: 'Virginia', seed: 6, correct: 'correct'},

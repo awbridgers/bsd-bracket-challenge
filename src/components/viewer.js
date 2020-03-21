@@ -12,7 +12,7 @@ const Viewer = props => {
   useEffect(()=>{
     if(dataLoaded){
       if(keyBracket){
-        changeBracket(results)
+        changeBracket(gameKey)
       }
       else{
         //check to see if the username exists

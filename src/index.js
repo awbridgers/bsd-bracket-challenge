@@ -80,11 +80,18 @@ const Routing = (props) =>{
       let bracketKey = [];
       firebase.database().ref('/Key').once('value').then((key)=>{
         bracketKey = key.val().results;
+        console.log(bracketKey)
         changeKey(bracketKey)
       }).then(()=>{
         firebase.database().ref('/Users').once('value').then((snapshot)=>{
           snapshot.forEach((user)=>{
             let {userName, champion, bracket} = user.val();
+            //correct the spelling for Louisville because I'm dumb
+            bracket.forEach((game)=>{
+              if(game.name === 'Louisvile'){
+                game.name = 'Louisville';
+              }
+            })
             tempArray.push({
               userName,
               score: calculateScore(bracket, bracketKey),

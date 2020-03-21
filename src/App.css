@@ -342,3 +342,6 @@ body,html{
 .link{
   color: #cfb53b;
 }
+.link:active{
+  color: #cfb53b;
+}
