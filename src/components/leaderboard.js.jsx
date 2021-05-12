@@ -6,7 +6,7 @@ const LeaderBoard = props => {
   return(
     <div className = 'leaderboard'>
       <div>
-        <h1>LeaderBoard</h1>
+        <h1>Leaderboard</h1>
       </div>
       <div>
         <table className = 'leaderTable'>
