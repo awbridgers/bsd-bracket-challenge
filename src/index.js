@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.js';
@@ -24,6 +24,8 @@ firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 })
 
+firebase.auth().signInWithEmailAndPassword(process.env.REACT_APP_FIREBASE_USERNAME, process.env.REACT_APP_FIREBASE_PASS);
+//firebase.auth().onAuthStateChanged((user)=>console.log(user))
 //firebase.database().ref('/Key').set({results: results})
 
 
@@ -31,6 +33,7 @@ firebase.initializeApp({
 
 const Routing = (props) =>{
   const {reload, updateUserArray, updateDataLoaded, changeReload, changeKey} = props;
+  const [loggedIn, setLoggedIn] = useState(null)
   const gradeBracket = (bracket, key) =>{
     const newBracket = bracket.map((game,i)=>{
       if(key[i].name === ''){
@@ -75,12 +78,22 @@ const Routing = (props) =>{
     return score;
   }
   useEffect(()=>{
-    if(reload){
+    return firebase.auth().onAuthStateChanged((user)=>{
+      if(user){
+        setLoggedIn(true)
+      }
+      else{
+        setLoggedIn(false)
+      }
+    })
+  }, [])
+  useEffect(()=>{
+    if(reload && loggedIn){
       let tempArray = [];
       let bracketKey = [];
       firebase.database().ref('/Key').once('value').then((key)=>{
         bracketKey = key.val().results;
-        console.log(bracketKey)
+        //console.log(bracketKey)
         changeKey(bracketKey)
       }).then(()=>{
         firebase.database().ref('/Users').once('value').then((snapshot)=>{
@@ -106,7 +119,7 @@ const Routing = (props) =>{
         })
       })
     }
-  },[reload,updateUserArray, updateDataLoaded, changeReload, changeKey])
+  },[reload,updateUserArray, updateDataLoaded, changeReload, changeKey, loggedIn])
   return(
     <div>
       <Router>
